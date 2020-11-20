@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <!-- meta http-equiv="refresh" content="60" -->
+        <link rel="shortcut icon" href="favicon.ico"/>
+        <title>Wather Camera | by LucasMAC</title>
+        <style>
+            body {
+                font-family: Tahoma, Verdana, Arial, sans-serif;
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $.ajax({
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authorization", 'Client-ID 30c6cf08f1949b0');
+                },
+                dataType: "json",
+                url: 'https://api.imgur.com/3/album/ZM8BIWS/images',
+                success: function (data) {
+                    var weather_image = '';
+                    $.each(data.data, function (index, element) {
+                        var length = data.data.length;
+                        if (index === (length - 1)) {
+                            var image_id = element.id;
+                            weather_image += '<img src="https://i.imgur.com/' + image_id + '.jpg"</div>';
+                        }
+                    });
+                    $("#weather-camera").html(weather_image);
+                }
+            });
+        </script>
+    </head>
+    <body bgcolor="#212528">
+        <table width="100%" height="100%">
+            <tr>
+                <td align="center" valign="middle">
+                    <div id="weather-camera"></div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
