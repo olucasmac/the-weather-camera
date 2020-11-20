@@ -5,7 +5,7 @@
 Usage
 =====
 For a raspberrypi supporting it, I just made a call via crontab to run
-every 5 minutes.
+every 60 seconds.
 
 Weather
 =======
